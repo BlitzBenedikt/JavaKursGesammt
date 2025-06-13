@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Polymorphismus und Vererbung erklärt</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            line-height: 1.6;
+        }
+        .task {
+            background-color: #ecf0f1;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+        .explanation {
+            background-color: #f7f7f7;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .fun-fact {
+            background-color: #d5f5e3;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 15px 0;
+        }
+        .warning {
+            background-color: #fcf3cf;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 15px 0;
+        }
+        .highlight {
+            background-color: #ffffcc;
+            padding: 2px 4px;
+            border-radius: 3px;
+        }
+        pre {
+            background-color: #f8f9fa;
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+        .new-concept {
+            background-color: #e8f4fc;
+            padding: 15px;
+            border-left: 4px solid #3498db;
+            margin: 15px 0;
+        }
+    </style>
+</head>
+<body class="container my-4">
+    <h1>Zwei wichtige OOP-Konzepte: Vererbung und Polymorphismus</h1>
+    
+    <div class="explanation">
+        <h3>Was wir schon über OOP wissen</h3>
+        <p>Wir haben bereits gelernt:</p>
+        <ul>
+            <li>Eine <strong>Klasse</strong> ist wie ein Bauplan für Objekte</li>
+            <li>Eine Klasse hat <strong>Eigenschaften</strong> (was ein Objekt weiß) und <strong>Methoden</strong> (was ein Objekt tun kann)</li>
+            <li>Ein <strong>Objekt</strong> ist eine "lebendige" Instanz einer Klasse</li>
+        </ul>
+    </div>
+
+    <div class="new-concept">
+        <h3>Neues Konzept: Vererbung</h3>
+        <p><strong>Vererbung</strong> bedeutet, dass eine Klasse alle Eigenschaften und Methoden einer anderen Klasse übernehmen (erben) kann.</p>
+        
+        <div class="fun-fact">
+            <p><strong>Beispiel aus dem echten Leben:</strong></p>
+            <p>Wie in einer Familie! Kinder erben Eigenschaften von ihren Eltern:</p>
+            <ul>
+                <li>Augenfarbe, Haarfarbe, Körpergröße, ...</li>
+                <li>Kinder haben aber auch eigene, neue Eigenschaften!</li>
+            </ul>
+        </div>
+        
+        <p>In Java sieht Vererbung so aus:</p>
+        <pre>
+// Elternklasse (auch "Basisklasse" genannt)
+class Tier {
+    String name;
+    
+    void essen() {
+        System.out.println(name + " isst.");
+    }
+}
+
+// Kindklasse (erbt von Tier)
+class Hund extends Tier {
+    // "extends Tier" bedeutet: Hund erbt alles von Tier
+    
+    // Zusätzliche Methode, die nur Hunde haben
+    void bellen() {
+        System.out.println(name + " bellt.");
+    }
+}
+
+// Verwendung:
+Hund bello = new Hund();
+bello.name = "Bello";    // Eigenschaft von Tier
+bello.essen();           // Methode von Tier
+bello.bellen();          // Eigene Methode von Hund
+        </pre>
+        
+        <p><strong>Wichtig zu verstehen:</strong></p>
+        <ul>
+            <li>Die Kindklasse (Hund) erbt alle Eigenschaften und Methoden der Elternklasse (Tier)</li>
+            <li>Die Kindklasse kann zusätzliche eigene Eigenschaften und Methoden haben</li>
+            <li>Wir benutzen das Schlüsselwort <code>extends</code>, um Vererbung in Java zu nutzen</li>
+        </ul>
+    </div>
+
+    <div class="task">
+        <h3>Aufgabe 1: Einfache Vererbung üben</h3>
+        
+        <p>Erstelle eine Elternklasse <code>Fahrzeug</code> und eine Kindklasse <code>Auto</code>.</p>
+        
+        <ol>
+            <li>Erstelle eine Klasse <code>Fahrzeug</code> mit:
+                <ul>
+                    <li>Eigenschaft: <code>name</code> (String)</li>
+                    <li>Methode: <code>fahren()</code> - gibt aus: "[name] fährt."</li>
+                </ul>
+            </li>
+            <li>Erstelle eine Klasse <code>Auto</code>, die von <code>Fahrzeug</code> erbt, mit:
+                <ul>
+                    <li>Zusätzliche Methode: <code>hupen()</code> - gibt aus: "[name] hupt: Tuut tuut!"</li>
+                </ul>
+            </li>
+            <li>Teste deine Klassen in einer <code>main</code>-Methode</li>
+        </ol>
+        
+        <button class="btn btn-primary" data-bs-toggle="collapse" data-bs-target="#loesung1">
+            Lösung anzeigen
+        </button>
+        <div id="loesung1" class="collapse mt-2">
+            <pre>
+class Fahrzeug {
+    String name;
+    
+    void fahren() {
+        System.out.println(name + " fährt.");
+    }
+}
+
+class Auto extends Fahrzeug {
+    void hupen() {
+        System.out.println(name + " hupt: Tuut tuut!");
+    }
+}
+
+public class FahrzeugDemo {
+    public static void main(String[] args) {
+        Auto meinAuto = new Auto();
+        meinAuto.name = "VW Golf";
+        
+        // Eine Methode von Fahrzeug aufrufen
+        meinAuto.fahren();
+        
+        // Eine Methode von Auto aufrufen
+        meinAuto.hupen();
+    }
+}
+
+/* Ausgabe:
+VW Golf fährt.
+VW Golf hupt: Tuut tuut!
+*/
+            </pre>
+        </div>
+    </div>
+
+    <div class="new-concept">
+        <h3>Neues Konzept: Methoden überschreiben</h3>
+        <p>Eine Kindklasse kann eine Methode der Elternklasse neu definieren (überschreiben).</p>
+        <p>Das bedeutet: Die Methode hat den gleichen Namen, arbeitet aber anders.</p>
+        
+        <pre>
+class Tier {
+    String name;
+    
+    void machGeräusch() {
+        System.out.println("Das Tier macht irgendein Geräusch.");
+    }
+}
+
+class Hund extends Tier {
+    @Override  // Diese Zeile ist optional, aber hilfreich
+    void machGeräusch() {
+        System.out.println(name + " bellt: Wau wau!");
+    }
+}
+
+class Katze extends Tier {
+    @Override
+    void machGeräusch() {
+        System.out.println(name + " miaut: Miau!");
+    }
+}
+        </pre>
+        
+        <p><strong>Merke:</strong></p>
+        <ul>
+            <li>Die Annotation <code>@Override</code> ist optional, hilft aber zur Fehlervermeidung</li>
+            <li>Die überschriebene Methode muss genau den gleichen Namen und Parameter haben</li>
+            <li>Wenn ein Objekt der Kindklasse die Methode aufruft, wird die neue Version verwendet</li>
+        </ul>
+    </div>
+
+    <div class="explanation">
+        <h3>Was ist Polymorphismus?</h3>
+        
+        <p>"Polymorphismus" ist ein langes Wort und bedeutet <span class="highlight">"verschiedene Formen annehmen"</span>.</p>
+        
+        <div class="fun-fact">
+            <p><strong>Beispiel aus dem echten Leben:</strong></p>
+            <p>Stell dir vor, du sagst zu verschiedenen Personen: "Guten Morgen!"</p>
+            <ul>
+                <li>Deine Mutter antwortet: "Guten Morgen, hast du gut geschlafen?"</li>
+                <li>Dein Lehrer antwortet: "Guten Morgen, bereit für den Unterricht?"</li>
+                <li>Dein Freund antwortet: "Morgen! Spielen wir später?"</li>
+            </ul>
+            <p>Der gleiche Gruß - aber jeder antwortet anders!</p>
+        </div>
+        
+        <p>In Java bedeutet Polymorphismus:</p>
+        <ol>
+            <li>Verschiedene Klassen können die gleiche Methode haben, aber sie arbeitet unterschiedlich</li>
+            <li>Du kannst Objekte verschiedener Klassen über eine gemeinsame Elternklasse ansprechen</li>
+        </ol>
+        
+        <h4>Der wichtigste Teil: Elternklassen-Variablen können Kindklassen-Objekte speichern!</h4>
+        <pre>
+Tier einTier = new Hund();  // Das ist erlaubt!
+einTier.name = "Bello";
+einTier.machGeräusch();     // Ruft die Hund-Version auf: "Bello bellt: Wau wau!"
+        </pre>
+        
+        <div class="warning">
+            <p><strong>Das ist wichtig zu verstehen:</strong> Obwohl <code>einTier</code> eine Variable vom Typ <code>Tier</code> ist, wird die <code>machGeräusch()</code>-Methode des <code>Hund</code>-Objekts aufgerufen!</p>
+            <p>Java schaut zur Laufzeit, welches Objekt wirklich in der Variable steckt, und führt dann die richtige Methode aus.</p>
+        </div>
+    </div>
+
+    <div class="task">
+        <h3>Aufgabe 2: Tier-Stimmen mit Polymorphismus</h3>
+        
+        <p>Erstelle ein Programm mit Tieren, die unterschiedliche Geräusche machen.</p>
+        
+        <ol>
+            <li>Erstelle eine Basisklasse <code>Tier</code> mit:
+                <ul>
+                    <li>Eigenschaft: <code>name</code> (String)</li>
+                    <li>Methode: <code>machGeräusch()</code> - gibt einen allgemeinen Text aus</li>
+                </ul>
+            </li>
+            <li>Erstelle mindestens zwei Tierarten (z.B. <code>Hund</code>, <code>Katze</code>), die von <code>Tier</code> erben</li>
+            <li>Jede Tierart soll die <code>machGeräusch()</code>-Methode überschreiben</li>
+            <li>Zeige Polymorphismus mit folgenden Schritten:
+                <ul>
+                    <li>Erstelle ein Array vom Typ <code>Tier</code></li>
+                    <li>Speichere verschiedene Tierobjekte im Array</li>
+                    <li>Rufe <code>machGeräusch()</code> für jedes Tier im Array auf</li>
+                </ul>
+            </li>
+        </ol>
+        
+        <button class="btn btn-primary" data-bs-toggle="collapse" data-bs-target="#loesung2">
+            Lösung anzeigen
+        </button>
+        <div id="loesung2" class="collapse mt-2">
+            <pre>
+class Tier {
+    String name;
+    
+    void machGeräusch() {
+        System.out.println(name + " macht ein Geräusch.");
+    }
+}
+
+class Hund extends Tier {
+    @Override
+    void machGeräusch() {
+        System.out.println(name + " bellt: Wau wau!");
+    }
+}
+
+class Katze extends Tier {
+    @Override
+    void machGeräusch() {
+        System.out.println(name + " miaut: Miau!");
+    }
+}
+
+class Kuh extends Tier {
+    @Override
+    void machGeräusch() {
+        System.out.println(name + " muht: Muuuuh!");
+    }
+}
+
+public class TierDemo {
+    public static void main(String[] args) {
+        // Einzelne Tiere erstellen
+        Hund bello = new Hund();
+        bello.name = "Bello";
+        
+        Katze minka = new Katze();
+        minka.name = "Minka";
+        
+        Kuh emma = new Kuh();
+        emma.name = "Emma";
+        
+        // Normale Aufrufe ohne Polymorphismus
+        System.out.println("Normale Aufrufe:");
+        bello.machGeräusch();
+        minka.machGeräusch();
+        emma.machGeräusch();
+        
+        // Ein Array von Tieren erstellen - DAS ist Polymorphismus!
+        System.out.println("\nMit Polymorphismus:");
+        Tier[] tiere = new Tier[3];
+        tiere[0] = bello;    // Ein Hund in einer Tier-Variable!
+        tiere[1] = minka;    // Eine Katze in einer Tier-Variable!
+        tiere[2] = emma;     // Eine Kuh in einer Tier-Variable!
+        
+        // Alle Tiere machen Geräusche - hier passiert Polymorphismus!
+        System.out.println("Alle Tiere machen Geräusche:");
+        for (Tier tier : tiere) {
+            tier.machGeräusch();  // Jedes Tier macht sein eigenes Geräusch!
+        }
+    }
+}
+
+/* Ausgabe:
+Normale Aufrufe:
+Bello bellt: Wau wau!
+Minka miaut: Miau!
+Emma muht: Muuuuh!
+
+Mit Polymorphismus:
+Alle Tiere machen Geräusche:
+Bello bellt: Wau wau!
+Minka miaut: Miau!
+Emma muht: Muuuuh!
+*/
+            </pre>
+            
+            <div class="mt-3">
+                <p><strong>Erklärung für Anfänger:</strong></p>
+                <p>In diesem Beispiel passiert Folgendes:</p>
+                <ol>
+                    <li>Wir erstellen verschiedene Tiere (Hund, Katze, Kuh)</li>
+                    <li>Dann speichern wir sie in einem <code>Tier[]</code>-Array - obwohl sie eigentlich unterschiedliche Klassen sind!</li>
+                    <li>Wenn wir <code>machGeräusch()</code> aufrufen, "weiß" Java trotzdem, welches Tier es ist, und ruft die richtige Methode auf</li>
+                </ol>
+                <p>Dies ist die Magie des Polymorphismus: Obwohl wir nur mit <code>Tier</code>-Variablen arbeiten, hören wir von jedem Tier sein eigenes, spezielles Geräusch!</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="task">
+        <h3>Aufgabe 3: Osterhasen-Helfer</h3>
+        
+        <p>Der Osterhase braucht Hilfe beim Osterfest! Erstelle ein Programm mit verschiedenen Osterhelfern.</p>
+        
+        <ol>
+            <li>Schreibe eine Klasse <code>Osterhelfer</code> mit:
+                <ul>
+                    <li>Eigenschaft: <code>name</code> (String)</li>
+                    <li>Methode: <code>helfen()</code> - gibt aus, wie der Helfer beim Osterfest hilft</li>
+                </ul>
+            </li>
+            <li>Erstelle zwei oder drei Helfertypen, die von <code>Osterhelfer</code> erben, zum Beispiel:
+                <ul>
+                    <li><code>Osterhase</code> - versteckt Eier</li>
+                    <li><code>Osterkueken</code> - bemalt Eier</li>
+                    <li>Erfinde einen eigenen Helfer!</li>
+                </ul>
+            </li>
+            <li>Jeder Helfertyp soll die <code>helfen()</code>-Methode überschreiben</li>
+            <li>Erstelle eine <code>Osterfest</code>-Klasse, die viele Helfer in einem Array speichert</li>
+            <li>Zeige, wie alle Helfer gemeinsam arbeiten, indem du für jeden die <code>helfen()</code>-Methode aufrufst</li>
+        </ol>
+        
+        <button class="btn btn-primary" data-bs-toggle="collapse" data-bs-target="#loesung3">
+            Lösung anzeigen
+        </button>
+        <div id="loesung3" class="collapse mt-2">
+            <pre>
+class Osterhelfer {
+    String name;
+    
+    Osterhelfer(String name) {
+        this.name = name;
+    }
+    
+    void helfen() {
+        System.out.println(name + " hilft irgendwie beim Osterfest.");
+    }
+}
+
+class Osterhase extends Osterhelfer {
+    Osterhase(String name) {
+        super(name);  // Ruft den Konstruktor der Elternklasse auf
+    }
+    
+    @Override
+    void helfen() {
+        System.out.println(name + " versteckt bunte Ostereier im Garten.");
+    }
+}
+
+class Osterkueken extends Osterhelfer {
+    Osterkueken(String name) {
+        super(name);
+    }
+    
+    @Override
+    void helfen() {
+        System.out.println(name + " bemalt Eier in schönen Farben.");
+    }
+}
+
+class Osterbäcker extends Osterhelfer {
+    Osterbäcker(String name) {
+        super(name);
+    }
+    
+    @Override
+    void helfen() {
+        System.out.println(name + " bäckt leckere Osterhasen aus Teig.");
+    }
+}
+
+class Osterfest {
+    private Osterhelfer[] helfer;
+    
+    Osterfest(Osterhelfer[] helfer) {
+        this.helfer = helfer;
+    }
+    
+    void feiern() {
+        System.out.println("=== Das Osterfest beginnt! ===");
+        System.out.println("Alle Helfer sind fleißig bei der Arbeit:");
+        
+        // Jeder Helfer hilft auf seine eigene Art
+        for (Osterhelfer h : helfer) {
+            h.helfen();  // Hier passiert Polymorphismus!
+        }
+        
+        System.out.println("=== Das Osterfest war ein voller Erfolg! ===");
+    }
+}
+
+public class OsterDemo {
+    public static void main(String[] args) {
+        // Verschiedene Osterhelfer erstellen
+        Osterhelfer[] alleHelfer = new Osterhelfer[4];
+        alleHelfer[0] = new Osterhase("Hoppel");
+        alleHelfer[1] = new Osterkueken("Piepsi");
+        alleHelfer[2] = new Osterbäcker("Meister Keks");
+        alleHelfer[3] = new Osterhelfer("Oma Inge");  // Ein normaler Helfer
+        
+        // Osterfest erstellen und feiern
+        Osterfest fest = new Osterfest(alleHelfer);
+        fest.feiern();
+    }
+}
+
+/* Ausgabe:
+=== Das Osterfest beginnt! ===
+Alle Helfer sind fleißig bei der Arbeit:
+Hoppel versteckt bunte Ostereier im Garten.
+Piepsi bemalt Eier in schönen Farben.
+Meister Keks bäckt leckere Osterhasen aus Teig.
+Oma Inge hilft irgendwie beim Osterfest.
+=== Das Osterfest war ein voller Erfolg! ===
+*/
+            </pre>
+            
+            <div class="mt-3">
+                <p><strong>Erklärung:</strong></p>
+                <p>Dieses Beispiel zeigt, wie Polymorphismus uns hilft, ein flexibles Programm zu schreiben:</p>
+                <ol>
+                    <li>Die <code>Osterfest</code>-Klasse arbeitet nur mit <code>Osterhelfer</code>-Objekten</li>
+                    <li>Sie muss nicht wissen, welche Art von Helfern genau dabei sind</li>
+                    <li>Jeder Helfer weiß selbst, wie er helfen kann</li>
+                    <li>Wir können jederzeit neue Helfertypen hinzufügen, ohne den Code für das Osterfest zu ändern!</li>
+                </ol>
+                <p>Das ist der große Vorteil von Polymorphismus: Wir können flexibel neue Unterklassen hinzufügen, ohne bestehenden Code anzupassen.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="explanation">
+        <h3>Zusammenfassung: Polymorphismus und Vererbung</h3>
+        
+        <ul>
+            <li><strong>Vererbung:</strong> Eine Klasse kann Eigenschaften und Methoden von einer anderen erben</li>
+            <li><strong>Methoden überschreiben:</strong> Eine Kindklasse kann eine Methode der Elternklasse neu definieren</li>
+            <li><strong>Polymorphismus:</strong> Objekte unterschiedlicher Klassen können auf den gleichen Methodenaufruf unterschiedlich reagieren</li>
+        </ul>
+        
+        <p><strong>Die 3 Schritte zum Polymorphismus:</strong></p>
+        <ol>
+            <li>Eine Elternklasse mit Methoden erstellen</li>
+            <li>Kindklassen erstellen, die Methoden überschreiben</li>
+            <li>Elternklassen-Variablen oder -Arrays verwenden, um Kindklassen-Objekte zu speichern</li>
+        </ol>
+        
+        <div class="fun-fact">
+            <p><strong>Einfache Erklärung zum Mitnehmen:</strong></p>
+            <p>Stell dir vor, du hast eine Fernbedienung mit einem "Ein/Aus"-Knopf:</p>
+            <ul>
+                <li>Bei einem Fernseher schaltet der Knopf den Bildschirm ein oder aus</li>
+                <li>Bei einer Stereoanlage schaltet er die Musik ein oder aus</li>
+                <li>Bei einer Lampe schaltet er das Licht ein oder aus</li>
+            </ul>
+            <p>Der gleiche Knopf (die gleiche Methode) tut bei verschiedenen Geräten (Objekten) unterschiedliche Dinge - das ist Polymorphismus!</p>
+        </div>
+    </div>
+
+    <div class="task">
+        <h3>Zusatzaufgabe für Schnelle: Erstelle dein eigenes Beispiel</h3>
+        <p>Überlege dir ein eigenes Beispiel für Polymorphismus aus deinem Alltag. Vielleicht:</p>
+        <ul>
+            <li>Verschiedene Sportarten und wie man sie spielt</li>
+            <li>Verschiedene Hausaufgaben und wie man sie erledigt</li>
+            <li>Verschiedene Computerspiele und wie man sie startet</li>
+        </ul>
+        <p>Setze dein Beispiel mit Vererbung und Polymorphismus in Java-Code um!</p>
+    </div>
+
+    <div class="footer mt-4">
+        <p>Viel Spaß mit Polymorphismus und Vererbung! Wier sehen uns nach denn Ferien wieder.😊</p>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
