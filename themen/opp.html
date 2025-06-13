@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Einführung in OOP in Java</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            line-height: 1.6;
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        .task {
+            background-color: #ecf0f1;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+        .explanation {
+            background-color: #f7f7f7;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        pre {
+            background-color: #f7f7f7;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        .footer {
+            margin-top: 30px;
+            font-size: 0.9em;
+            color: #95a5a6;
+        }
+    </style>
+</head>
+<body class="container my-4">
+    <h1>Einführung in Objektorientierte Programmierung (OOP) in Java</h1>
+    <p>Hey da ich leider diese modul stunde nicht da sein kann gibt es die modul stunde auf einer anderen art und weise ich hoffe es macht trozdem spaß ist ja bald wochenende.</p>
+    <p>Objektorientierte Programmierung (OOP) ist ein Programmierparadigma, das auf der Idee von <strong>Klassen</strong> und <strong>Objekten</strong> basiert. Es ermöglicht uns, Code wiederzuverwenden und Strukturen effizient zu organisieren.</p>
+    
+    <h2>Grundkonzepte:</h2>
+    <ul>
+        <li><strong>Klassen:</strong> Baupläne für Objekte. Eine Klasse definiert Eigenschaften und Methoden.</li>
+        <li><strong>Objekte:</strong> Instanzen von Klassen, die konkrete Daten enthalten.</li>
+        <li><strong>Vererbung:</strong> Mechanismus, bei dem eine Klasse Eigenschaften und Methoden von einer anderen erbt.</li>
+        <li><strong>Polymorphismus:</strong> Fähigkeit von Objekten, auf unterschiedliche Weise auf Methoden zu reagieren.</li>
+        <li><strong>Abstraktion:</strong> Das Herausfiltern der wesentlichen Eigenschaften eines Objekts.</li>
+        <li><strong>Kapselung:</strong> Die Sicherstellung, dass Daten nur über definierte Schnittstellen zugänglich sind.</li>
+    </ul>
+
+    <h2>Erklärungsblock: Klassen vs. Objekte</h2>
+    <div class="explanation">
+        <h3>Was ist der Unterschied zwischen Klassen und Objekten?</h3>
+        <p><strong>Klassen:</strong> Eine Klasse ist wie eine Schablone oder ein Bauplan, der die Struktur und das Verhalten von Objekten definiert. Sie beschreibt die Eigenschaften (Attribute) und Funktionen (Methoden), die ein Objekt besitzen kann.</p>
+        <p><strong>Objekte:</strong> Ein Objekt ist eine Instanz einer Klasse. Es wird basierend auf dem Bauplan der Klasse erstellt und kann mit eigenen Werten gefüllt werden. Während die Klasse eine allgemeine Vorlage ist, repräsentiert das Objekt eine spezifische Realisierung dieser Vorlage.</p>
+        <p><strong>Beispiel:</strong> Wenn eine Klasse <code>Auto</code> existiert, definiert sie allgemeine Eigenschaften wie <code>Marke</code> und <code>Baujahr</code>. Ein Objekt dieser Klasse könnte ein spezifisches Auto wie "BMW, Baujahr 2023" darstellen.</p>
+        <p><strong>Weitere Details:</strong> Klassen dienen als Schablone, in der Attribute und Methoden festgelegt werden. Jedes Objekt stellt eine konkrete Realisierung dieser Schablone dar, wobei es eigene Werte und Zustände besitzt. Wenn Sie mehrere Objekte aus derselben Klasse erstellen, teilen sie sich den Bauplan, unterscheiden sich aber durch ihre konkreten Eigenschaften (z.B. Name, Alter).</p>
+    </div>
+
+    <h2>Aufgaben:</h2>
+    <div class="task">
+        <h3>Aufgabe 1: Klasse erstellen</h3>
+        <p>Erstellen Sie eine Klasse <code>Person</code>. Die Klasse sollte folgende Eigenschaften und Methoden enthalten:</p>
+        <ul>
+            <li><strong>Eigenschaften:</strong> <code>Name</code> (String), <code>Alter</code> (int)</li>
+            <li><strong>Methode:</strong> <code>vorstellen()</code>, die den Namen und das Alter der Person in der Konsole ausgibt.</li>
+        </ul>
+        <p><strong>Hinweis:</strong> Denken Sie daran, dass die Methode <code>vorstellen()</code> mit <code>System.out.println()</code> arbeitet, um die Ausgabe zu erzeugen.</p>
+        <p><strong>Beispielausgabe:</strong></p>
+        <pre>
+Mein Name ist Anna und ich bin 25 Jahre alt.
+        </pre>
+        <button class="btn btn-primary" data-bs-toggle="collapse" data-bs-target="#loesung1">
+            Lösung anzeigen
+        </button>
+        <div id="loesung1" class="collapse mt-2">
+            <pre>
+public class Person {
+    String name;
+    int alter;
+
+    public void vorstellen() {
+        System.out.println("Mein Name ist " + name + " und ich bin " + alter + " Jahre alt.");
+    }
+}
+            </pre>
+        </div>
+    </div>
+    <div class="task">
+        <h3>Aufgabe 2: Objekte erstellen</h3>
+        <p>Erstellen Sie zwei Objekte der Klasse <code>Person</code> mit eigenen Werten. Verwenden Sie die Methode <code>vorstellen()</code>, um die Werte der Objekte in der Konsole auszugeben.</p>
+        <p><strong>Schritte:</strong></p>
+        <ol>
+            <li>Erstellen Sie ein Objekt der Klasse <code>Person</code> mit einem Namen und einem Alter Ihrer Wahl.</li>
+            <li>Rufen Sie die Methode <code>vorstellen()</code> für dieses Objekt auf.</li>
+            <li>Wiederholen Sie dies für ein zweites Objekt mit anderen Werten.</li>
+        </ol>
+        <p><strong>Beispielausgabe:</strong></p>
+        <pre>
+Mein Name ist Anna und ich bin 25 Jahre alt.
+Mein Name ist Max und ich bin 30 Jahre alt.
+        </pre>
+        <button class="btn btn-primary" data-bs-toggle="collapse" data-bs-target="#loesung2">
+            Lösung anzeigen
+        </button>
+        <div id="loesung2" class="collapse mt-2">
+            <pre>
+public static void main(String[] args) {
+    Person anna = new Person();
+    anna.name = "Anna";
+    anna.alter = 25;
+    anna.vorstellen();
+
+    Person max = new Person();
+    max.name = "Max";
+    max.alter = 30;
+    max.vorstellen();
+}
+            </pre>
+        </div>
+    </div>
+
+    <h2>Erklärungsblock: Vererbung</h2>
+    <div class="explanation">
+        <h3>Was ist Vererbung?</h3>
+        <p>Vererbung ist ein Mechanismus, bei dem eine Klasse (die <strong>Basisklasse</strong>) ihre Eigenschaften und Methoden an eine andere Klasse (die <strong>abgeleitete Klasse</strong>) weitergibt. Dadurch können Programmierer bestehenden Code wiederverwenden und neue Funktionalitäten hinzufügen.</p>
+        <p>Beispiel:</p>
+        <pre>
+class Fahrzeug {
+    String typ;
+
+    void starten() {
+        System.out.println("Das Fahrzeug startet.");
+    }
+}
+
+class Auto extends Fahrzeug {
+    String marke;
+
+    void hupen() {
+        System.out.println("Das Auto hupt.");
+    }
+}
+        </pre>
+        <p>In diesem Beispiel erbt die Klasse <code>Auto</code> von <code>Fahrzeug</code>. Sie hat Zugriff auf die Methode <code>starten()</code> und fügt zusätzlich die Methode <code>hupen()</code> hinzu.</p>
+    </div>
+
+    <div class="task">
+        <h3>Aufgabe 3: Vererbung implementieren</h3>
+        <p>Erstellen Sie eine Basisklasse <code>Tier</code> mit den folgenden Eigenschaften und Methoden:</p>
+        <ul>
+            <li><strong>Eigenschaften:</strong> <code>Name</code> (String), <code>Alter</code> (int)</li>
+            <li><strong>Methode:</strong> <code>essen()</code>, die ausgibt: <code>[Name] isst gerade.</code></li>
+        </ul>
+        <p>Erstellen Sie eine abgeleitete Klasse <code>Hund</code>, die von der Klasse <code>Tier</code> erbt. Fügen Sie der Klasse <code>Hund</code> eine Methode <code>bellen()</code> hinzu, die ausgibt: <code>[Name] bellt.</code></p>
+        <p><strong>Schritte:</strong></p>
+        <ol>
+            <li>Definieren Sie die Klasse <code>Tier</code> mit den oben genannten Eigenschaften und Methoden.</li>
+            <li>Erstellen Sie die Klasse <code>Hund</code>, die von <code>Tier</code> erbt.</li>
+            <li>Erstellen Sie ein Objekt der Klasse <code>Hund</code>, setzen Sie die Werte für <code>Name</code> und <code>Alter</code>, und rufen Sie die Methoden <code>essen()</code> und <code>bellen()</code> auf.</li>
+        </ol>
+        <p><strong>Beispielausgabe:</strong></p>
+        <pre>
+Bello isst gerade.
+Bello bellt.
+        </pre>
+        <button class="btn btn-primary" data-bs-toggle="collapse" data-bs-target="#loesung3">
+            Lösung anzeigen
+        </button>
+        <div id="loesung3" class="collapse mt-2">
+            <pre>
+class Tier {
+    String name;
+    int alter;
+
+    void essen() {
+        System.out.println(name + " isst gerade.");
+    }
+}
+
+class Hund extends Tier {
+    void bellen() {
+        System.out.println(name + " bellt.");
+    }
+}
+
+public static void main(String[] args) {
+    Hund bello = new Hund();
+    bello.name = "Bello";
+    bello.alter = 3;
+    bello.essen();
+    bello.bellen();
+}
+            </pre>
+        </div>
+    </div>
+    <h>Finde nun weitere Bespiele aus dem Leben und wende die aufgaben noch einmal an so das du dafür auch java code stücke hast.</h>
+
+    <div class="footer">
+        <p>Speichern nicht vergessen und auf ins wochenende</p>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

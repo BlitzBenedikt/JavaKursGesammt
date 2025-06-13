@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java Kurs Übersicht</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Java Kurs Übersicht</h1>
+        <p>Willkommen zur Übersichtsseite des Java Kurses</p>
+    </header>
+    
+    <main>
+        <section class="course-topics">
+            <h2>Kursthemen</h2>
+            <div class="topic-grid">
+                <div class="topic-card">
+                    <h3>Einführung in Java</h3>
+                    <p>Grundlagen der Programmiersprache Java</p>
+                    <a href="themen/einführung.html" class="btn">Zum Thema</a>
+                </div>
+                <div class="topic-card">
+                    <h3>Objektorientierte Programmierung</h3>
+                    <p>Grundkonzepte der OOP in Java</p>
+                    <a href="themen/opp.html" class="btn">Zum Thema</a>
+                </div>
+                <div class="topic-card">
+                    <h3>Polymorphismus und Vererbung</h3>
+                    <p>Grundlagen der objektorientierten Konzepte und deren Anwendung</p>
+                    <a href="themen/polymorphismus/index.html" class="btn">Zum Thema</a>
+                </div>
+                <div class="topic-card">
+                    <h3>Exception Handling</h3>
+                    <p>Umgang mit Ausnahmen und Fehlerfällen in Java</p>
+                    <a href="themen/exception-handling-lesson/index.html" class="btn">Zum Thema</a>
+                </div>
+                <div class="topic-card">
+                    <h3>Collections und Datenstrukturen</h3>
+                    <p>Java Collections Framework und wichtige Datenstrukturen</p>
+                    <a href="themen/javaCollections-und-datenstrukturen/index.html" class="btn">Zum Thema</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Nach der Themenliste und vor dem Footer einfügen -->
+        <section class="project-checklist">
+            <h2>Abschlussprojekt Basics</h2>
+            <p>Erstelle ein Java-Programm mit den folgenden Grundelementen:</p>
+            
+            <div class="basic-checklist">
+                <div class="checklist-item">
+                    <h3>OOP Basics</h3>
+                    <ul>
+                        <li><input type="checkbox"> <strong>Klassen erstellen</strong> - z.B. <code>class Kunde { }</code></li>
+                        <li><input type="checkbox"> <strong>Attribute & Methoden</strong> - z.B. <code>private String name; public void setName(String name) { }</code></li>
+                    </ul>
+                </div>
+                
+                <div class="checklist-item">
+                    <h3>Vererbung</h3>
+                    <ul>
+                        <li><input type="checkbox"> <strong>Basisklasse & Kindklasse</strong> - z.B. <code>class Fahrzeug { } class Auto extends Fahrzeug { }</code></li>
+                        <li><input type="checkbox"> <strong>(Bonus)Methoden überschreiben</strong> - z.B. <code>@Override public String toString() { }</code></li>
+                    </ul>
+                </div>
+                
+                <div class="checklist-item">
+                    <h3>Exception Handling</h3>
+                    <ul>
+                        <li><input type="checkbox"> <strong>try-catch Block</strong> - z.B. <code>try { dateiLesen(); } catch (IOException e) { }</code></li>
+                        <li><input type="checkbox"> <strong>Eigene Exception</strong> - z.B. <code>class UngültigeEingabeException extends Exception { }</code></li>
+                    </ul>
+                </div>
+                
+                <div class="checklist-item">
+                    <h3>Collections (eins von beiden)</h3>
+                    <ul>
+                        <li><input type="checkbox"> <strong>Liste verwenden</strong> - z.B. <code>List<String> namen = new ArrayList<>();</code></li>
+                        <li><input type="checkbox"> <strong>Map verwenden</strong> - z.B. <code>Map<Integer, String> zuordnung = new HashMap<>();</code></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="project-ideas">
+                <h3>Einfache Projektideen</h3>
+                <ul>
+                    <li><strong>Adressbuch:</strong> Kontakte speichern und verwalten</li>
+                    <li><strong>To-Do-Liste:</strong> Aufgaben erstellen und abhaken</li>
+                    <li><strong>Einfacher Shop:</strong> Produkte und Warenkorb verwalten</li>
+                    <li><strong>Inventarverwaltungssystem:</strong> Produkte verwalten, kategorisieren und Bestand führen</li>
+                    <li><strong>Bibliotheksverwaltung:</strong> Bücher ausleihen, zurückgeben und Nutzer verwalten</li>
+                </ul>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <p>&copy; 2025 Java Kurs</p>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
